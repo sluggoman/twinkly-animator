@@ -4,23 +4,18 @@ To use:
 
 ```
 npm install
+
+node animation_script -r renderer -t twinkly_ip other_options
 ```
+
+where
+*renderer:* _twinkly_, _console_, or _html_
+*twinkly_ip:* IP address of device
 
 For the marquee scroller:
 
 ```
-node mydemo4.js Twinkly-IP text
-```
-
-to simulate
-
-```
-SIM=1 node mydemo4.js Twinkly-IP text
-```
-eg.
-
-```
-node mydemo4.js 192.168.2.217 "GARY SUCKS"
+node samples/marquee.js -t 192.168.2.217 "GARY SUCKS"
 ```
 
 [Output of the above](https://photos.app.goo.gl/CdA2PKYEndkDa7vb8)

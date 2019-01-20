@@ -4,6 +4,7 @@
   "description": "Animate Things programmatically on Twinkly LEDs",
   "main": "mydemo.js",
   "dependencies": {
+    "minimist": "^1.2.0",
     "twinkly-api": "^0.2.1"
   },
   "devDependencies": {},

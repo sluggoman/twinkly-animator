@@ -1,10 +1,19 @@
-var renderer = require('./renderer_factory.js');
+var argv =
+  require('minimist')(
+    process.argv.slice(2),
+    { alias: { renderer: "r", twinkly: "t" }}
+  );
+var renderer =
+  require('../renderer_factory.js')(
+    argv.renderer,
+    { twinkly_ip: argv.twinkly }
+  );
 
-var Frame = require('./frame.js');
-var Point = require('./point.js');
-var Animation = require('./animation.js');
+var Frame = require('../frame.js');
+var Point = require('../point.js');
+var Animation = require('../animation.js');
 
-var text = process.argv[3];
+var text = argv._[0];
 var animation = new Animation(renderer);
 var frameWidth = 50 + 8 * text.length;
 var frame = new Frame(

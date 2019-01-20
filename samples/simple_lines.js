@@ -1,8 +1,17 @@
-var renderer = require('./renderer_factory.js');
+var argv = 
+  require('minimist')(
+    process.argv.slice(2),
+    { alias: { renderer: "r", twinkly: "t" }}
+  );
+var renderer = 
+  require('../renderer_factory.js')(
+    argv.renderer, 
+    { twinkly_ip: argv.twinkly }
+  );
 
-var Frame = require('./frame.js');
-var Point = require('./point.js');
-var Animation = require('./animation.js');
+var Frame = require('../frame.js');
+var Point = require('../point.js');
+var Animation = require('../animation.js');
 
 var animation = new Animation(renderer);
 for (var i = 0; i < 8; i++) {
