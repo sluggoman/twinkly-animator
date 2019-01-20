@@ -8,7 +8,7 @@ npm install
 node animation_script -r renderer -t twinkly_ip other_options
 ```
 
-where
+where  
 **renderer:** _twinkly_, _console_, or _html_  
 **twinkly_ip:** IP address of device  
 
