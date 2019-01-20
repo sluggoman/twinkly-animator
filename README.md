@@ -9,8 +9,8 @@ node animation_script -r renderer -t twinkly_ip other_options
 ```
 
 where
-*renderer:* _twinkly_, _console_, or _html_
-*twinkly_ip:* IP address of device
+**renderer:** _twinkly_, _console_, or _html_  
+**twinkly_ip:** IP address of device  
 
 For the marquee scroller:
 
