@@ -1,7 +1,7 @@
 var argv =
   require('minimist')(
     process.argv.slice(2),
-    { alias: { renderer: "r", twinkly: "t" }}
+    { alias: { renderer: "r", twinkly: "t", debug: "d" }}
   );
 
 function getRenderer(renderer_name, renderer_options) {
@@ -10,7 +10,7 @@ function getRenderer(renderer_name, renderer_options) {
     renderer = new ConsoleRenderer();
   } else if (renderer_name == "html") {
     HTMLRenderer = require('./html_renderer.js');
-    renderer = new HTMLRenderer();
+    renderer = new HTMLRenderer(renderer_options.debug);
   } else {
     TwinklyRenderer = require('./twinkly_renderer.js');
     if (!renderer_options.twinkly_ip) {
@@ -24,4 +24,5 @@ function getRenderer(renderer_name, renderer_options) {
   return renderer;
 }
 
-module.exports = getRenderer(argv.renderer, { twinkly_ip: argv.twinkly })
+module.exports = getRenderer(argv.renderer, 
+	                    { debug: argv.debug, twinkly_ip: argv.twinkly });

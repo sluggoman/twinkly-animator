@@ -11,4 +11,12 @@ module.exports = class Animation {
   render(delay) {
     this.renderer.render(this.frames, delay);
   }
+
+  getFrame(idx) {
+    return this.frames[Math.floor(idx)];
+  }
+
+  numFrames() {
+    return this.frames.length;
+  }
 }
