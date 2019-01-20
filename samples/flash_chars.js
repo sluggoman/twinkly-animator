@@ -1,13 +1,5 @@
-var argv =
-  require('minimist')(
-    process.argv.slice(2),
-    { alias: { renderer: "r", twinkly: "t" }}
-  );
-var renderer =
-  require('../renderer_factory.js')(
-    argv.renderer,
-    { twinkly_ip: argv.twinkly }
-  );
+var argv = require('minimist')(process.argv.slice(2));
+var renderer = require('../renderer_factory.js');
 
 var Frame = require('../frame.js');
 var Point = require('../point.js');

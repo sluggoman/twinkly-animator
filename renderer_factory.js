@@ -1,5 +1,10 @@
-module.exports = function(renderer_name, renderer_options) {
-  var renderer;
+var argv =
+  require('minimist')(
+    process.argv.slice(2),
+    { alias: { renderer: "r", twinkly: "t" }}
+  );
+
+function getRenderer(renderer_name, renderer_options) {
   if (renderer_name == "console") {
     ConsoleRenderer = require('./console_renderer.js');
     renderer = new ConsoleRenderer();
@@ -18,3 +23,5 @@ module.exports = function(renderer_name, renderer_options) {
   }
   return renderer;
 }
+
+module.exports = getRenderer(argv.renderer, { twinkly_ip: argv.twinkly })
