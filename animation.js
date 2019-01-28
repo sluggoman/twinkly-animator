@@ -19,4 +19,14 @@ module.exports = class Animation {
   numFrames() {
     return this.frames.length;
   }
+
+  fixedLight(point, colour, options = {}) {
+    var startFrame = Math.max(0, options.startFrame || 0);
+    var endFrame = 
+      Math.min(options.endFrame || this.numFrames() - 1, this.numFrames() - 1);
+    for (var i = startFrame; i <= endFrame; i++) {
+      var frame = this.getFrame(i);
+      frame.setLight(point, colour);
+    }
+  }	  
 }

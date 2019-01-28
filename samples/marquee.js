@@ -22,7 +22,7 @@ for (var i = 0; i < text.length; i++) {
 while(true) {
   var viewFrame = new Frame(25, 8, { frameData: frame.getViewPortData() });
   animation.addFrame(viewFrame);
-  if (!frame.scrollRight({ horizontal: 8 })) {
+  if (!frame.scrollRight()) {
     break;
   }
 }

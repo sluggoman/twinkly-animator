@@ -64,18 +64,30 @@ var Frame = class Frame {
     }
   }
 
-  scrollRight() {
+  scrollRight(amount = 1) {
     var oldviewx = this.viewPort.x;
-    this.scrollViewPort({ horizontal: 1 });
-    return oldviewx != this.viewPort.x;
+    this.scrollViewPort({ horizontal: amount });
+    return this.viewPort.x - oldviewx == amount;
   }
     
-  scrollLeft() {
+  scrollLeft(amount = 1) {
     var oldviewx = this.viewPort.x;
-    this.scrollViewPort({ horizontal: -1 });
-    return oldviewx != this.viewPort.x;
+    this.scrollViewPort({ horizontal: -amount });
+    return oldviewx - this.viewPort.x == amount;
   }
 
+  scrollDown(amount = 1) {
+    var oldviewy = this.viewPort.y;
+    this.scrollViewPort({ vertical: amount });
+    return this.viewPort.y - oldviewy == amount;
+  }
+    
+  scrollUp(amount = 1) {
+    var oldviewy = this.viewPort.y;
+    this.scrollViewPort({ vertical: -amount });
+    return oldviewy - this.viewPort.y == amount;
+  }
+    
   getViewPortData() {
     var horizData = this.frameData.slice(
       this.viewPort.x * this.height,

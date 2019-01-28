@@ -37,9 +37,15 @@ function render(frames, delay) {
   }
 }
 
-var animationData = ${frameData};
+function loopRender() {
+  var animationData = ${frameData};
+  var totalDelay = ${delay} * (animationData.length + 1);
 
-render(animationData, ${delay});
+  render(animationData, ${delay});
+  setTimeout(loopRender, totalDelay);
+}
+
+loopRender();
 
 </script>
 </body>
