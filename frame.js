@@ -117,13 +117,13 @@ var Frame = class Frame {
     var font = new Font(options.fontName || 'basic');
     var bitmap = font.getBitMap(char);
     for (var i = 0; i < bitmap.length; i++) {
-      var column = 0;
+      var column = options.reverse ? 7 : 0;
       for (var j = 0x80; j > 0; j >>= 1) {
         if (bitmap[i] & j) {
           var point = new Point(at.x+column, at.y+i);
           this.setLight(point, colour);
         }
-        column++;
+        column += options.reverse ? -1 : 1;
       }
     }
   }
