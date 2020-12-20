@@ -122,6 +122,9 @@ var Frame = class Frame {
         if (bitmap[i] & j) {
           var point = new Point(at.x+column, at.y+i);
           this.setLight(point, colour);
+        } else if (options.bgColour) {
+          var point = new Point(at.x+column, at.y+i);
+          this.setLight(point, options.bgColour);
         }
         column += options.reverse ? -1 : 1;
       }
