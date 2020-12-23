@@ -1,0 +1,74 @@
+extends layout
+
+block content
+  h1= title
+ 
+  form(id='render-options')
+    table
+      thead
+        tr
+          td
+            label(for='component') Module
+          td
+            select(name='component' id='component-select')
+              each component in Object.keys(components)
+                option(value=component)= component
+        tr
+          td
+            label(for='output') Output
+          td
+            span HTML
+            input(name='renderer' value='html' type='radio' checked)/
+            span Device
+            input(name='renderer' value='twinkly' type='radio')/
+  
+      tbody(id="component_params")
+  
+  button(id='render') Go
+
+  div
+    iframe(id='light-frame' src='about:blank' width='530' height='190' frameBorder='0')
+
+  script(type="text/javascript").
+    function populate_params(param_aliases, param_defaults) {
+      var tbody = $('#component_params');
+      tbody.empty();
+      Object.keys(param_aliases).forEach(function(alias, index) {
+        if (alias == "renderer") {
+          return;
+        }
+        var default_value = param_defaults[param_aliases[alias]];
+        tbody.append("<tr><td>" + 
+                      alias + 
+                      "</td><td><input name='" + 
+                      alias + 
+                      "' type='text' value='" +
+                      default_value +
+                      "'></input>");
+      });
+   }
+
+   function get_params(component) {
+     $.ajax({
+       url: '/component/' + component + "/arguments"
+    }).done(
+      function(data) {
+        populate_params(data.alias, data.default);
+      });
+   }
+ 
+   $('#component-select').on('change', function() {
+     get_params($(this).val());
+   });
+
+   $('#render').on('click', function() {
+     var component = $('#component-select').val();
+     var url = 
+      '/component/' + component + '/render?' + $('#render-options').serialize();
+     console.log(url);
+     $('#light-frame').attr('src', url);
+   });
+
+   $(document).ready(function() {
+     get_params($('#component-select').val());
+   });

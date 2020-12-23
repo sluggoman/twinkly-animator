@@ -9,7 +9,7 @@ module.exports = class Animation {
   }
 
   render(delay) {
-    this.renderer.render(this.frames, delay);
+    return this.renderer.render(this.frames, delay);
   }
 
   getFrame(idx) {

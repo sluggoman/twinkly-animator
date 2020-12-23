@@ -5,7 +5,11 @@ var Animation = require('../animation.js');
 module.exports = function() { return ({
   defaultArgs: function() { return({
     s: 500,
-    text: "SOMETHING TO FLASH"
+    txt: "SOMETHING TO FLASH"
+  })},
+
+  aliasArgs: function() { return({
+    text: "txt"
   })},
 
   animate: function(renderer, frames = null, options = {}) {

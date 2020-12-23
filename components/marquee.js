@@ -11,7 +11,7 @@ module.exports = function() { return({
     bg: 0,
     bb: 0,
     rev: false,
-    text: "MARQUEE SAMPLE",
+    txt: "MARQUEE SAMPLE",
     s: 100
   })},
 
@@ -23,6 +23,7 @@ module.exports = function() { return({
     background_green: "bg",
     background_blue: "bb",
     reverse: "rev",
+    text: "txt"
   })},
 
   animate: function(renderer, frames = null, options = {}) {

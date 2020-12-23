@@ -54,10 +54,6 @@ loopRender();
 }
 
 module.exports = class HTMLRenderer {
-  constructor(debug) {
-    this.debug = debug;
-  }
-
   render(frames, delay) {
     var out = "[";
     for (var frame = 0; frame < frames.length; frame++ ) {
@@ -67,11 +63,8 @@ module.exports = class HTMLRenderer {
         out += `{r:${data.r},g:${data.g},b:${data.b}},`;
       }
       out += "],"
-      if (this.debug) {
-        out += "\n";
-      }
     }	    
     out += "]";
-    console.log(clientRenderPage(out, delay));	  
+    return clientRenderPage(out, delay);	  
   }
 }

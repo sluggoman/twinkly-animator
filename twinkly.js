@@ -2,28 +2,14 @@ var path = require('path');
 var parseArgs = require('minimist');
 var getRenderer = require('./renderer_factory.js');
 var component = require(path.join(process.cwd(), process.argv[2]));
-
-var rendererDefaults = {
-  r: 'console',
-  d: false,
-  f: 'basic',
-  s: 500
-};
-
-var rendererAlias = {
-  renderer: 'r',
-  twinkly_ip: 't',
-  debug: 'd',
-  speed: 's',
-  font: 'f'
-}
+var globalArgs = require('./global_args.js');
 
 var defaultArgs = Object.assign(
-  rendererDefaults, 
+  globalArgs.default, 
   component.defaultArgs ? component.defaultArgs() : {}
 );
 var aliasArgs = Object.assign(
-  rendererAlias, 
+  globalArgs.alias, 
   component.aliasArgs ? component.aliasArgs() : {}
 );
 var options = parseArgs(
@@ -33,4 +19,7 @@ var options = parseArgs(
 
 var renderer = getRenderer(options.renderer, options);
 var animation = component.animate(renderer, null, options);
-animation.render(options.speed);
+var output = animation.render(options.speed);
+if (output) {
+  console.log(output);
+}

@@ -7,8 +7,13 @@ var twinkle = require('../effects/twinkle.js');
 module.exports = function() { return({
   defaultArgs: function() { return({
     s: 100,   // to override global default speed
-    text: "SOME TEXT"
+    txt: "SOME TEXT"
   })},
+
+  aliasArgs: function() { return({
+    text: "txt"
+  })},
+
 
   animate: function(renderer, frames = null, options = {}) {
     var animation = new Animation(renderer, frames);
