@@ -5,7 +5,7 @@ To use:
 ```
 npm install
 
-node animation_script -r renderer -t twinkly_ip other_options
+node twinkly.js animation_script -r renderer -t twinkly_ip other_options
 ```
 
 where  
@@ -15,7 +15,7 @@ where
 For the marquee scroller:
 
 ```
-node samples/marquee.js -t 192.168.2.217 "GARY SUCKS"
+node twinkly.js components/marquee.js -r twinkly -t 192.168.2.217 "GARY SUCKS"
 ```
 
 [Output of the above](https://photos.app.goo.gl/CdA2PKYEndkDa7vb8)
