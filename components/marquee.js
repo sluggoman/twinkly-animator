@@ -45,7 +45,9 @@ module.exports = function() { return({
       frame.drawChar(text[i], 
                      point, 
                      { r: options.fr, g: options.fg, b: options.fb },
-                     { bgColour: bgColour, reverse: options.rev }
+                     { bgColour: bgColour, 
+                       reverse: options.rev,
+                       fontName: options.font }
                     );
     }
     

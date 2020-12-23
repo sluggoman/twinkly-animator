@@ -6,6 +6,7 @@ var component = require(path.join(process.cwd(), process.argv[2]));
 var rendererDefaults = {
   r: 'console',
   d: false,
+  f: 'basic',
   s: 500
 };
 
@@ -13,7 +14,8 @@ var rendererAlias = {
   renderer: 'r',
   twinkly_ip: 't',
   debug: 'd',
-  speed: 's'
+  speed: 's',
+  font: 'f'
 }
 
 var defaultArgs = Object.assign(
