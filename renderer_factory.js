@@ -11,6 +11,9 @@ function getRenderer(renderer_name, renderer_options) {
       throw "No device IP address specified";
     }
     renderer = new TwinklyRenderer(renderer_options.twinkly_ip);
+  } else if (renderer_name == "raw") {
+    RawRenderer = require('./raw_renderer.js');
+    renderer = new RawRenderer();
   } else {
     throw "No renderer";
   }

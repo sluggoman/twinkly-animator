@@ -13,9 +13,13 @@
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "brfs": "^2.0.2"
+  },
   "scripts": {
     "start": "node ./bin/www",
+    "build_components": "node build_components.js > components.js",
+    "bundle": "browserify api.js -o views/standalone.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
